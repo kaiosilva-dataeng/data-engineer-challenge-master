@@ -1,5 +1,3 @@
-# terraform/lambda.tf
-
 # Empacota o código da nossa Lambda em um arquivo .zip
 data "archive_file" "lambda_zip" {
   type        = "zip"
@@ -22,7 +20,7 @@ resource "aws_lambda_function" "partition_cataloger" {
   environment {
     variables = {
       # Aponta a Lambda para o LocalStack (essencial para o ambiente local)
-      AWS_ENDPOINT_URL      = "http://localstack:4566" # 'host.docker.internal' permite o container da lambda acessar a host machine
+      AWS_ENDPOINT_URL      = "http://localstack:4566"
       DYNAMODB_TABLE_NAME = aws_dynamodb_table.partitions_state.name
       GLUE_DATABASE_NAME  = aws_glue_catalog_database.datahub_db.name
     }

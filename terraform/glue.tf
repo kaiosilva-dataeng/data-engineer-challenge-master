@@ -1,11 +1,9 @@
-# terraform/glue.tf
-
-# O recurso do Banco de Dados continua o mesmo
+# O recurso do Banco de Dados
 resource "aws_glue_catalog_database" "datahub_db" {
   name = "datahub_db"
 }
 
-# AGORA GENÉRICO: Recurso para as Tabelas no Glue Catalog
+# Recurso para as Tabelas no Glue Catalog
 resource "aws_glue_catalog_table" "generic_tables" {
   # O for_each vai iterar sobre cada chave do mapa var.glue_tables
   for_each = var.glue_tables
