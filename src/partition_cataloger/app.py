@@ -28,8 +28,6 @@ GLUE_DATABASE_NAME = os.environ.get("GLUE_DATABASE_NAME", "datahub_db")
 
 
 def handler(event, context):
-    print("--- LAMBDA INVOCADA COM O CÓDIGO MAIS RECENTE ---")
-
     print("Evento recebido:", json.dumps(event))
 
     for record in event["Records"]:
